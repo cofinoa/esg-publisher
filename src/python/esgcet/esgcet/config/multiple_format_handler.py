@@ -97,6 +97,7 @@ class MultipleFormatHandler(CdunifFormatHandler):
         """
         Close the file.
         """
+
         if self.noncd == False:
             CdunifFormatHandler.close(self)
     
@@ -106,7 +107,9 @@ class MultipleFormatHandler(CdunifFormatHandler):
 
         Returns a list of string variable names.
         """
-        if (self.noncd):
+        if (self.attr_only):
+            return ["multiple"]
+        elif (self.noncd):
             return []
         else:
             return CdunifFormatHandler.inquireVariableList(self)
